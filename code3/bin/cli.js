@@ -1,16 +1,19 @@
-#! /usr/bin/env node
+const {program} = require('commander')
 
-//表示用系统环境变量去运行
+program.option('-f --framwork <framwork>','设置框架')
+//创建出creat命令选项 项目名字 其他指令接收
+program
+.command('creat <project> [other...]')
+.alias('crt')//alias设置了crt为别名
+.description('创建项目')//添加说明
+.action((project,args)=>{
+    //! 命令行的执行逻辑代码
+    console.log(project)//project项目名
+    console.log("-----")
+    console.log(args)//other参数
+})
 
-// console.log('这里是mycli')
-
-//先创建bin以及其目录下的.js文件再执行npm init
-
-//2.npm link   将其作为全局命令
-
-//// if(process.argv[2] == '--help'){
-////     console.log('获取到了命令参数');
-//// }
 
 
-const {} = require
+//process.argv 属性返回一个数组，这个数组包含了启动Node.js进程时的命令行参数，
+program.parse(process.argv)
